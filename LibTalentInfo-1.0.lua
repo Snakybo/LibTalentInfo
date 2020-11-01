@@ -1,5 +1,5 @@
 local VERSION_MAJOR = "LibTalentInfo-1.0"
-local VERSION_MINOR = 1
+local VERSION_MINOR = 2
 
 if LibStub == nil then
 	error(VERSION_MAJOR .. " requires LibStub")
@@ -683,7 +683,7 @@ end
 --- @param slotIndex integer
 --- @return integer
 function Library:GetNumPvPTalentsForSpec(specID, slotIndex)
-	assert(type(slotIndex) == "number")
+	assert(type(slotIndex) == "number", "expected slotIndex to be a number, got " .. (slotIndex or "nil"))
 
 	if specID == nil or pvpTalents[specID] == nil then
 		return nil
@@ -717,8 +717,8 @@ end
 --- @return boolean known
 --- @return boolean grantedByAura
 function Library:GetTalentInfo(specID, tier, column)
-	assert(type(tier) == "number")
-	assert(type(column) == "number")
+	assert(type(tier) == "number", "expected tier to be a number, got " .. (tier or "nil"))
+	assert(type(column) == "number", "expected column to be a number, got " .. (column or "nil"))
 
 	if specID == nil or talents[specID] == nil then
 		return nil
@@ -760,8 +760,8 @@ end
 --- @return boolean known
 --- @return boolean grantedByAura
 function Library:GetPvPTalentInfo(specID, slotIndex, talentIndex)
-	assert(type(slotIndex) == "number")
-	assert(type(talentIndex) == "number")
+	assert(type(slotIndex) == "number", "expected slotIndex to be a number, got " .. (slotIndex or "nil"))
+	assert(type(talentIndex) == "number", "expected talentIndex to be a number, got " .. (talentIndex or "nil"))
 
 	if specID == nil or pvpTalents[specID] == nil then
 		return nil
