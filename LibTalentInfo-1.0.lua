@@ -1,5 +1,5 @@
 local VERSION_MAJOR = "LibTalentInfo-1.0"
-local VERSION_MINOR = 2
+local VERSION_MINOR = 3
 
 if LibStub == nil then
 	error(VERSION_MAJOR .. " requires LibStub")
@@ -49,18 +49,18 @@ end
 
 -- https://wow.gamepedia.com/SpecializationID
 local specializations = {
-	WARRIOR		= { 71, 72, 73 },			-- Arms, Fury, Protection
-	PALADIN		= { 65, 66, 70 },			-- Holy, Protection, Retribution
-	HUNTER		= { 253, 254, 255 },		-- Beast Mastery, Marksmanship, Survival
-	ROGUE		= { 259, 260, 261 },		-- Assassination, Outlaw, Subtlety
-	PRIEST		= { 256, 257, 258 },		-- Discipline, Holy, Shadow
-	DEATHKNIGHT	= { 250, 251, 252 },		-- Blood, Frost, Unholy
-	SHAMAN		= { 262, 263, 264 }, 		-- Elemental, Enhancement, Restoration
-	MAGE		= { 62, 63, 64 },			-- Arcane, Fire, Frost
-	WARLOCK		= { 265, 266, 267 },		-- Afflication, Demonology, Destruction
-	MONK		= { 268, 270, 269 },		-- Brewmaster, Mistweaver, Windwalker
-	DRUID		= { 102, 103, 104, 105 },	-- Balance, Feral, Guardian, Restoration
-	DEMONHUNTER = { 577, 581 }				-- Havoc, Vengeance
+	WARRIOR     = { 71, 72, 73 },         -- Arms, Fury, Protection
+	PALADIN     = { 65, 66, 70 },         -- Holy, Protection, Retribution
+	HUNTER      = { 253, 254, 255 },      -- Beast Mastery, Marksmanship, Survival
+	ROGUE       = { 259, 260, 261 },      -- Assassination, Outlaw, Subtlety
+	PRIEST      = { 256, 257, 258 },      -- Discipline, Holy, Shadow
+	DEATHKNIGHT = { 250, 251, 252 },      -- Blood, Frost, Unholy
+	SHAMAN      = { 262, 263, 264 },      -- Elemental, Enhancement, Restoration
+	MAGE        = { 62, 63, 64 },         -- Arcane, Fire, Frost
+	WARLOCK     = { 265, 266, 267 },      -- Afflication, Demonology, Destruction
+	MONK        = { 268, 270, 269 },      -- Brewmaster, Mistweaver, Windwalker
+	DRUID       = { 102, 103, 104, 105 }, -- Balance, Feral, Guardian, Restoration
+	DEMONHUNTER = { 577, 581 }            -- Havoc, Vengeance
 }
 
 -- Macro to retrieve all talent IDs for the current specialization:
