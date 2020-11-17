@@ -1,5 +1,5 @@
 local VERSION_MAJOR = "LibTalentInfo-1.0"
-local VERSION_MINOR = 5
+local VERSION_MINOR = 6
 
 if LibStub == nil then
 	error(VERSION_MAJOR .. " requires LibStub")
