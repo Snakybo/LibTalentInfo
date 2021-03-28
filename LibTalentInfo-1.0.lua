@@ -1,53 +1,26 @@
 local VERSION_MAJOR = "LibTalentInfo-1.0"
-local VERSION_MINOR = 6
+local VERSION_MINOR = 7
 
 if LibStub == nil then
 	error(VERSION_MAJOR .. " requires LibStub")
 end
 
-local Library = LibStub:NewLibrary(VERSION_MAJOR, VERSION_MINOR)
+if WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
+	return
+end
 
-if Library == nil then
+--- @class LibTalentInfo
+local LibTalentInfo = LibStub:NewLibrary(VERSION_MAJOR, VERSION_MINOR)
+
+if LibTalentInfo == nil then
 	return
 end
 
 --- The maximum number of PvP talents slots available.
 --- @type integer
-Library.MAX_PVP_TALENT_SLOTS = 3
+LibTalentInfo.MAX_PVP_TALENT_SLOTS = 3
 
--- https://wow.gamepedia.com/API_UnitClass
-local classes
-
-if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
-	classes = {
-		"WARRIOR",
-		"PALADIN",
-		"HUNTER",
-		"ROGUE",
-		"PRIEST",
-		"DEATHKNIGHT",
-		"SHAMAN",
-		"MAGE",
-		"WARLOCK",
-		"MONK",
-		"DRUID",
-		"DEMONHUNTER"
-	}
-elseif WOW_PROJECT_ID == WOW_PROJECT_CLASSIC then
-	classes = {
-		"WARRIOR",
-		"PALADIN",
-		"HUNTER",
-		"ROGUE",
-		"PRIEST",
-		"SHAMAN",
-		"MAGE",
-		"WARLOCK",
-		"DRUID"
-	}
-end
-
--- https://wow.gamepedia.com/SpecializationID
+--- @type table<string,table<integer,integer>>
 local specializations = {
 	WARRIOR = {
 		[1] = 71, -- Arms
@@ -125,6 +98,8 @@ local specializations = {
 
 -- Macro to retrieve all talent IDs for the current specialization:
 -- /run local a=""local b=table.concat;local c=", "for d=1,MAX_TALENT_TIERS do local e,f={},{}for g=1,NUM_TALENT_COLUMNS do local h,i=GetTalentInfo(d,g,1)e[#e+1]=h;f[#f+1]=i end;a=a..b(e,c)..", -- "..b(f,c).."\n"end;print(a)
+
+--- @type table<integer,integer[]>
 local talents = {
 	-- Arms Warrior
 	[71] = {
@@ -526,6 +501,8 @@ local talents = {
 
 -- Macro to retrieve all PvP talent IDs for the current specialization:
 -- /run local a,b,c,d,e=C_SpecializationInfo.GetPvpTalentSlotInfo(1),table.concat,", ",{},{}local f=a.availableTalentIDs;for g=1,#f do local h,i=GetPvpTalentInfoByID(f[g])d[#d+1]=h;e[#e+1]=i end;print("[1] = { "..b(d,c).." }, -- "..b(e,c))
+
+--- @type table<integer,table<integer,integer[]>>
 local pvpTalents = {
 	-- Arms Warrior
 	[71] = {
@@ -781,20 +758,13 @@ local pvpTalents = {
 	},
 }
 
---- Create an iterator which contains all available classes.
-function Library:AllClasses()
-	return pairs(specializations)
-end
-
 --- Get all specialization IDs for the specified class.
 ---
---- * `classFileName` is the non-localized class as returned by `UnitClass`.
----
---- @param classFilename string
---- @return table
-function Library:GetClassSpecIDs(classFilename)
+--- @param classFilename string The non-localized class name as returned by `UnitClass`.
+--- @return table<integer,integer>
+function LibTalentInfo:GetClassSpecIDs(classFilename)
 	if classFilename == nil or specializations[classFilename] == nil then
-		return nil
+		return {}
 	end
 
 	local specializationIds = specializations[classFilename]
@@ -809,21 +779,18 @@ end
 
 --- Get the number of available PvP talents that the specified specialization has in the specified talent slot.
 ---
---- * `specID` can be obtained from `GetSpecializationInfo` or by iterating through `LibTalentInfo.AllClasses`.
---- * `slotIndex` is an integer between 1 and `LibTalentInfo.MAX_PVP_TALENT_SLOTS`.
----
---- @param specID integer
+--- @param specID integer The specialization ID obtained by `GetSpecializationInfo`.
 --- @param slotIndex integer
 --- @return integer
-function Library:GetNumPvPTalentsForSpec(specID, slotIndex)
+function LibTalentInfo:GetNumPvPTalentsForSpec(specID, slotIndex)
 	assert(type(slotIndex) == "number", "bad argument #2: expected number, got " .. type(slotIndex))
 
 	if specID == nil or pvpTalents[specID] == nil then
-		return nil
+		return 0
 	end
 
 	if slotIndex <= 0 or slotIndex > self.MAX_PVP_TALENT_SLOTS then
-		error("Slot index is out of range: " .. slotIndex ". Must be an integer between 1 and " .. self.MAX_PVP_TALENT_SLOTS)
+		error("Slot index is out of range: " .. slotIndex .. ". Must be an integer between 1 and " .. self.MAX_PVP_TALENT_SLOTS)
 	end
 
 	local slots = pvpTalents[specID]
@@ -834,25 +801,21 @@ end
 
 --- Get the info for a talent of the specified specialization.
 ---
---- * `specID` can be obtained from `GetSpecializationInfo` or by iterating through `LibTalentInfo.AllClasses`.
---- * `tier` is an integer value between 1 and `MAX_TALENT_TIERS`.
---- * `column` is an integer value between 1 and `NUM_TALENT_COLUMNS`.
----
---- @param specID integer
---- @param tier integer
---- @param column integer
+--- @param specID integer The specialization ID obtained by `GetSpecializationInfo`.
+--- @param tier integer An integer value between 1 and `MAX_TALENT_TIERS`.
+--- @param column integer An integer value between 1 and `NUM_TALENT_COLUMNS`.
 --- @return integer talentID
 --- @return string name
 --- @return integer texture
 --- @return boolean selected
 --- @return boolean available
 --- @return integer spellID
---- @return nil unknown,
+--- @return nil
 --- @return integer row
 --- @return integer column
 --- @return boolean known
 --- @return boolean grantedByAura
-function Library:GetTalentInfo(specID, tier, column)
+function LibTalentInfo:GetTalentInfo(specID, tier, column)
 	assert(type(tier) == "number", "bad argument #2: expected number, got " .. type(tier))
 	assert(type(column) == "number", "bad argument #3: expected number, got " .. type(column))
 
@@ -882,26 +845,22 @@ end
 
 --- Get info for a PvP talent of the specified specialization.
 ---
---- * `specID` can be obtained from `GetSpecializationInfo` or by iterating through `LibTalentInfo.AllClasses`.
---- * `slotIndex` is an integer between 1 and `LibTalentInfo.MAX_PVP_TALENT_SLOTS`.
---- * `talentIndex` is an integer between 1 and the number of PvP talents available for the specified specialization.
----                 can be obtained using `LibTalentInfo.GetNumPvPTalentsForSpec`.
----
---- @param specID integer
---- @param slotIndex integer
---- @param talentIndex integer
+--- @param specID integer The specialization ID obtained by `GetSpecializationInfo`.
+--- @param slotIndex integer The slot index of the PvP talent row, an integer between `1` and `LibTalentInfo.MAX_PVP_TALENT_SLOTS`.
+--- @param talentIndex integer An integer between `1` and the number of PvP talents available for the specified specialization.
 --- @return integer talentID
 --- @return string name
 --- @return integer texture
 --- @return boolean selected
 --- @return boolean available
 --- @return integer spellID
---- @return nil unknown,
+--- @return nil
 --- @return integer row
 --- @return integer column
 --- @return boolean known
 --- @return boolean grantedByAura
-function Library:GetPvPTalentInfo(specID, slotIndex, talentIndex)
+--- @see LibTalentInfo#GetNumPvPTalentsForSpec
+function LibTalentInfo:GetPvPTalentInfo(specID, slotIndex, talentIndex)
 	assert(type(slotIndex) == "number", "bad argument #2: expected number, got " .. type(slotIndex))
 	assert(type(talentIndex) == "number", "bad argument #3: expected number, got " .. type(talentIndex))
 
