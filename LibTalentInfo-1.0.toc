@@ -1,4 +1,4 @@
-## Interface: 90002
+## Interface: 90200
 ## Title: Lib: TalentInfo
 ## Author: Snakybo
 ## Notes: Get (PvP) talent data for any class or spec.
