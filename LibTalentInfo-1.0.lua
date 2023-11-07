@@ -10,12 +10,6 @@ local LibTalentInfo = LibStub:NewLibrary("LibTalentInfo-1.0", 11)
 --- @field public specializations table<string,table<integer,integer>>
 --- @field public pvpTalents table<integer,integer[]>
 
---- @class TalentEntry
---- @field public entryID integer
---- @field public spellID integer
---- @field public name string
---- @field public icon integer
-
 if LibTalentInfo == nil then
 	return
 end
