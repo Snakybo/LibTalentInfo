@@ -1,9 +1,19 @@
-## Interface: 100200
+## Interface: 110105, 50500, 40402, 11507
 ## Title: Lib: TalentInfo
 ## Author: Snakybo
-## Notes: Get PvP talent data for any class or spec.
+## Notes: A library which provides class, specialization, talent, and PvP talent information for any class or specialization.
 ## Version: @project-version@
-## X-Category: Library
+## Category-enUS: Libraries
+## Category-deDE: Bibliotheken
+## Category-esES: Bibliotecas
+## Category-esMX: Bibliotecas
+## Category-frFR: Bibliothèques
+## Category-itIT:
+## Category-koKR:
+## Category-ptBR: Bibliotecas
+## Category-ruRU: Библиотеки
+## Category-zhCN: 函数库
+## Category-zhTW: 函式庫
 
 LibStub\LibStub.lua
 

@@ -1,0 +1,28 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "r*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Package
+      uses: BigWigsMods/packager@v2
+      env:
+        CF_API_KEY: ${{ secrets.CF_API_KEY }}
+        GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: "Archive"
+      uses: "actions/upload-artifact@v4"
+      if: success()
+      with:
+        name: LibTalentInfo
+        path: .release/
+        include-hidden-files: true

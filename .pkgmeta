@@ -1,0 +1,6 @@
+package-as: LibTalentInfo
+enable-nolib-creation: no
+
+ignore:
+  - .editorconfig
+  - README.md
