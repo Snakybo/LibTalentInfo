@@ -1,4 +1,4 @@
-package-as: LibTalentInfo
+package-as: LibTalentInfo-1.0
 enable-nolib-creation: no
 
 ignore:
