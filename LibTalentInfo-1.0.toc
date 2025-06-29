@@ -14,6 +14,9 @@
 ## Category-ruRU: Библиотеки
 ## Category-zhCN: 函数库
 ## Category-zhTW: 函式庫
+## X-Website: https://github.com/Snakybo/LibTalentInfo
+## X-Curse-Project-ID: 417044
+## X-Github: https://github.com/Snakybo/LibTalentInfo
 
 LibStub\LibStub.lua
 
