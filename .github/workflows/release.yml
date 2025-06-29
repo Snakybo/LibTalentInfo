@@ -2,8 +2,8 @@ name: Release
 
 on:
   push:
-    tags:
-      - "r*"
+    branches:
+      - master
 
 jobs:
   build:
