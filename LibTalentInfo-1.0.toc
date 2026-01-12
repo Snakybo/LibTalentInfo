@@ -1,4 +1,4 @@
-## Interface: 110107, 50500, 40402, 11507
+## Interface: 120000, 110107, 50503, 40402, 11508
 ## Title: Lib: TalentInfo
 ## Author: Snakybo
 ## Notes: A library which provides class, specialization, talent, and PvP talent information for any class or specialization.
