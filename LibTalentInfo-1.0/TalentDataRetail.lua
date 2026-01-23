@@ -1,5 +1,5 @@
--- LibTalentInfo, a World of Warcraft library to provide class, specialization, and talent information.
--- Copyright (C) 2024  Kevin Krol
+-- LibTalentInfo-1.0, a World of Warcraft library to provide class, specialization, and talent information.
+-- Copyright (C) 2026  Kevin Krol
 --
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -41,7 +41,7 @@ LibTalentInfo:SetProvider({
 		"WARRIOR",
 	},
 
-	--- @type { [string]: { [integer]: TalentData.Specialization } }
+	--- @type { [string]: { [integer]: LibTalentInfo-1.0.Specialization } }
 	specializations = {
 		["DEATHKNIGHT"] = {
 			[1] = { id = 250, name = "Blood", icon = 135770 },
@@ -124,7 +124,7 @@ LibTalentInfo:SetProvider({
 		},
 	},
 
-	--- @type { [unknown]: TalentData.Talent[] }
+	--- @type { [unknown]: LibTalentInfo-1.0.Talent[] }
 	talents = {
 		[62] = {
 		},
@@ -234,7 +234,7 @@ LibTalentInfo:SetProvider({
 		},
 	},
 
-	--- @type { [unknown]: TalentData.Talent[] }
+	--- @type { [unknown]: LibTalentInfo-1.0.Talent[] }
 	pvpTalents = {
 		[62] = {
 			{ id = 637, name = "Improved Mass Invisibility", icon = 1387356 },

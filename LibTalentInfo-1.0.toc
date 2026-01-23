@@ -1,6 +1,7 @@
-## Interface: 120000, 110107, 50503, 40402, 11508
-## Title: Lib: TalentInfo
+## Interface: 120000, 50503, 40402, 11508
+## Title: Lib: TalentInfo-1.0
 ## Author: Snakybo
+## LoadOnDemand: 1
 ## Notes: A library which provides class, specialization, talent, and PvP talent information for any class or specialization.
 ## Version: @project-version@
 ## Category-enUS: Libraries
@@ -14,10 +15,10 @@
 ## Category-ruRU: Библиотеки
 ## Category-zhCN: 函数库
 ## Category-zhTW: 函式庫
-## X-Website: https://github.com/Snakybo/LibTalentInfo
+## X-Website: https://github.com/Snakybo/LibTalentInfo-1.0
 ## X-Curse-Project-ID: 417044
-## X-Github: https://github.com/Snakybo/LibTalentInfo
+## X-Github: https://github.com/Snakybo/LibTalentInfo-1.0
 
-LibStub\LibStub.lua
+Libs.xml
 
 LibTalentInfo-1.0.xml
