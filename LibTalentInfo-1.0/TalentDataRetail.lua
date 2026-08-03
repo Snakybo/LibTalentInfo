@@ -24,13 +24,13 @@ local LibTalentInfo = LibStub and LibStub("LibTalentInfo-1.0", true)
 
 local interfaceVersion = select(4, GetBuildInfo())
 
-if LibTalentInfo == nil or interfaceVersion < 110000 or interfaceVersion >= 130000 then
+if LibTalentInfo == nil or interfaceVersion < 120000 or interfaceVersion >= 130000 then
 	return
 end
 
 --- @type LibTalentInfo-1.0.Provider
 LibTalentInfo:SetProvider({
-	build = 66337,
+	build = 68914,
 	classes = {
 		"DEATHKNIGHT",
 		"DEMONHUNTER",
@@ -246,7 +246,6 @@ LibTalentInfo:SetProvider({
 			{ id = 5601, name = "Ethereal Blink", icon = 136054 },
 			{ id = 5661, name = "Chrono Shift", icon = 629533 },
 			{ id = 5707, name = "Overpowered Barrier", icon = 1723997 },
-			{ id = 5714, name = "Nether Flux", icon = 1717107 },
 		},
 		[63] = {
 			{ id = 644, name = "World in Flames", icon = 236228 },
@@ -352,10 +351,8 @@ LibTalentInfo:SetProvider({
 		},
 		[102] = {
 			{ id = 180, name = "Celestial Guardian", icon = 1408835 },
-			{ id = 182, name = "Crescent Burn", icon = 136096 },
 			{ id = 184, name = "Moon and Stars", icon = 1408838 },
 			{ id = 185, name = "Moonkin Aura", icon = 236156 },
-			{ id = 822, name = "Dying Stars", icon = 1392544 },
 			{ id = 834, name = "Deep Roots", icon = 134221 },
 			{ id = 836, name = "Faerie Swarm", icon = 538516 },
 			{ id = 3058, name = "Star Burst", icon = 1408832 },
@@ -405,6 +402,7 @@ LibTalentInfo:SetProvider({
 			{ id = 5649, name = "Tireless Pursuit", icon = 538517 },
 			{ id = 5668, name = "Call of Ohn'ahra", icon = 136076 },
 			{ id = 5687, name = "Forest Guardian", icon = 1408831 },
+			{ id = 5739, name = "Ancient of Lore", icon = 874857 },
 		},
 		[250] = {
 			{ id = 204, name = "Rot and Wither", icon = 538561 },
@@ -452,6 +450,7 @@ LibTalentInfo:SetProvider({
 			{ id = 5441, name = "Wild Kingdom", icon = 236159 },
 			{ id = 5444, name = "Kindred Beasts", icon = 236184 },
 			{ id = 5534, name = "Diamond Ice", icon = 236209 },
+			{ id = 5746, name = "Scatter Shot", icon = 132153 },
 		},
 		[254] = {
 			{ id = 651, name = "Survival Tactics", icon = 132293 },
@@ -462,6 +461,7 @@ LibTalentInfo:SetProvider({
 			{ id = 5440, name = "Consecutive Concussion", icon = 135860 },
 			{ id = 5533, name = "Diamond Ice", icon = 236209 },
 			{ id = 5700, name = "Aspect of the Fox", icon = 458223 },
+			{ id = 5745, name = "Scatter Shot", icon = 132153 },
 		},
 		[255] = {
 			{ id = 661, name = "Hunting Pack", icon = 236181 },
@@ -473,6 +473,7 @@ LibTalentInfo:SetProvider({
 			{ id = 3609, name = "Chimaeral Sting", icon = 132211 },
 			{ id = 5443, name = "Wild Kingdom", icon = 236159 },
 			{ id = 5532, name = "Interlope", icon = 132180 },
+			{ id = 5744, name = "Scatter Shot", icon = 132153 },
 		},
 		[256] = {
 			{ id = 100, name = "Purification", icon = 135894 },
@@ -708,7 +709,6 @@ LibTalentInfo:SetProvider({
 			{ id = 5460, name = "Obsidian Mettle", icon = 1526594 },
 			{ id = 5462, name = "Scouring Flame", icon = 135826 },
 			{ id = 5464, name = "Time Stop", icon = 4631367 },
-			{ id = 5466, name = "Swoop Up", icon = 4622446 },
 			{ id = 5467, name = "Nullifying Shroud", icon = 135752 },
 			{ id = 5469, name = "Unburdened Flight", icon = 1029587 },
 			{ id = 5556, name = "Divide and Conquer", icon = 5152257 },
@@ -719,7 +719,6 @@ LibTalentInfo:SetProvider({
 			{ id = 5459, name = "Obsidian Mettle", icon = 1526594 },
 			{ id = 5461, name = "Scouring Flame", icon = 135826 },
 			{ id = 5463, name = "Time Stop", icon = 4631367 },
-			{ id = 5465, name = "Swoop Up", icon = 4622446 },
 			{ id = 5468, name = "Nullifying Shroud", icon = 135752 },
 			{ id = 5470, name = "Unburdened Flight", icon = 1029587 },
 			{ id = 5595, name = "Divide and Conquer", icon = 5152257 },
@@ -733,7 +732,6 @@ LibTalentInfo:SetProvider({
 			{ id = 5558, name = "Nullifying Shroud", icon = 135752 },
 			{ id = 5560, name = "Unburdened Flight", icon = 1029587 },
 			{ id = 5561, name = "Scouring Flame", icon = 135826 },
-			{ id = 5562, name = "Swoop Up", icon = 4622446 },
 			{ id = 5563, name = "Obsidian Mettle", icon = 1526594 },
 			{ id = 5564, name = "Chrono Loop", icon = 4630470 },
 			{ id = 5612, name = "Born in Flame", icon = 4622464 },
@@ -749,6 +747,7 @@ LibTalentInfo:SetProvider({
 			{ id = 5733, name = "Detainment", icon = 463560 },
 			{ id = 5734, name = "Glimpse", icon = 1348401 },
 			{ id = 5735, name = "Beckon", icon = 132102 },
+			{ id = 5738, name = "Reverse Magic", icon = 1380372 },
 		},
 	}
 })
